@@ -77,7 +77,7 @@ flutter:
   fonts:
     - family: ArchivoBlack
       fonts:
-        - asset: fonts/ArchivoBlack-Regular.ttf
+        - asset: lib/fonts/ArchivoBlack-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
