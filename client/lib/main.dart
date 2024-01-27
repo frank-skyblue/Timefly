@@ -1,36 +1,48 @@
 import 'package:flutter/material.dart';
 import 'pages/login_page.dart';
+import 'pages/home_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp ({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginPage(), // Using LoginPage as the home widget
+    return ChangeNotifierProvider(
+      create: (context) => MyAppState(),
+      child: const AuthWrapper(),
     );
   }
 }
-/**
-class LoginPage extends StatelessWidget {
+
+class MyAppState extends ChangeNotifier {
+  bool isAuthenticated = false;
+
+  void toggleAuth() {
+    isAuthenticated = !isAuthenticated;
+    notifyListeners();
+  }
+}
+
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login Page'),
+    final appState = context.watch<MyAppState>();
+
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
       ),
-      body: Center(
-        child: Text(
-          'This is the login page.',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      home: appState.isAuthenticated
+          ? const HomePage()
+          : const LoginPage(), // Pass toggleAuth function to LoginPage
     );
   }
 }
-**/
