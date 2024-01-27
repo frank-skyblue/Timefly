@@ -36,13 +36,14 @@ class AuthWrapper extends StatelessWidget {
     final appState = context.watch<MyAppState>();
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: appState.isAuthenticated
           ? const HomePage()
-          : const LoginPage(), // Pass toggleAuth function to LoginPage
+          : LoginPage(), // Pass toggleAuth function to LoginPage
     );
   }
 }

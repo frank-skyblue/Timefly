@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+//import 'package:modernlogintute/components/my_button.dart';
+import '../components/my_textfield.dart';
 import '../main.dart';
+//import 'package:modernlogintute/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  LoginPage({Key? key}) : super(key: key);
+
+  // Text editing controllers
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,43 +26,72 @@ class LoginPage extends StatelessWidget {
         child: Column(
           children: [
             // Logo
-            Image.asset(
-              'lib/images/timefly.png',
-              width: 300,
-              height: 300,
-            ),
-
-            Image.asset(
-              'lib/images/login.png',
-              width: 200,
-              height: 200,
-            ),
-
-            // Welcome back, you've been missed!
-            const Text(
-              'Welcome back! sign in to save your memories!',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontFamily: 'ArchivoBlack',
+            Padding(
+              padding: const EdgeInsets.all(64.0),
+              child: Image.asset(
+                'lib/images/timefly.png',
+                width: 300,
               ),
             ),
 
-            // Username textfield
-            const TextField(
-              decoration: InputDecoration(
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.all(64.0),
+              child: Image.asset(
+                'lib/images/login.png',
+                width: 200,
+              ),
+            ),
+
+            // Welcome back, you've been missed!
+            const Center(
+              child: Text(
+                'Welcome back! Sign in to save your memories!',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontFamily: 'ArchivoBlack',
                 ),
               ),
             ),
 
-            // Password textfield
-            // Add your password TextField here
+            const SizedBox(height: 25),
+
+            // Username text field
+            MyTextField(
+              controller: usernameController,
+              hintText: 'Username',
+              obscureText: false,
+            ),
+
+            const SizedBox(height: 10),
+
+            // Password text field
+            MyTextField(
+              controller: passwordController,
+              hintText: 'Password',
+              obscureText: true, // Set to true if it's a password field
+            ),
+
+            const SizedBox(height: 10),
+
+            // forgot password
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'Forgot Password?',
+                    style: TextStyle(color: Colors.grey[600]),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 25),
 
             // Sign in button
             // Add your sign-in button here
-            // Sign in button
             ElevatedButton(
               onPressed: () {
                 // Add your sign-in button logic here
@@ -72,7 +108,7 @@ class LoginPage extends StatelessWidget {
 
             // Not a member? Sign in
             // Add your "Not a member? Sign in" widget here
-          ], // <-- Added a closing bracket for the Column
+          ],
         ),
       ),
     );
