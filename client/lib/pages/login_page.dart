@@ -43,15 +43,14 @@ class LoginPage extends StatelessWidget {
             ),
 
             // Welcome back, you've been missed!
-            const Center(
-              child: Text(
-                'Welcome back! Sign in to save your memories!',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 16,
-                  fontFamily: 'ArchivoBlack',
-                ),
+            const Text(
+              'Welcome back! Sign in to save your memories!',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16,
+                fontFamily: 'ArchivoBlack',
               ),
+              textAlign: TextAlign.center,
             ),
 
             const SizedBox(height: 25),
