@@ -31,15 +31,6 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             // align everything to the middle for any screen size
             children: [
-              // Logo
-              /** Padding(
-                padding: const EdgeInsets.only(top:0.0),
-                child: Image.asset(
-                  'lib/images/timefly.png',
-                  height: 200,
-                  width: 200,
-                ),
-              ),**/
 
               // Welcome back, you've been missed!
               const Text(
@@ -110,8 +101,10 @@ class LoginPage extends StatelessWidget {
 
               // Sign in button
               MyButton(
-                onTap: () => toggleAuth(), // Call the toggleAuth function
+                onTap: () => toggleAuth(),
+                // Call the toggleAuth function
               ),
+
               const SizedBox(height: 25),
 
               // Continue with
