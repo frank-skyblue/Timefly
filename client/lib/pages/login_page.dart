@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
             // align everything to the middle for any screen size
             children: [
               // Logo
-             /** Padding(
+              /** Padding(
                 padding: const EdgeInsets.only(top:0.0),
                 child: Image.asset(
                   'lib/images/timefly.png',
@@ -86,7 +86,8 @@ class LoginPage extends StatelessWidget {
               MyTextField(
                 controller: passwordController,
                 hintText: 'Password',
-                obscureText: true, // Set to true if it's a password field since you don't want it seen
+                obscureText:
+                    true, // Set to true if it's a password field since you don't want it seen
               ),
 
               const SizedBox(height: 10),
@@ -109,7 +110,7 @@ class LoginPage extends StatelessWidget {
 
               // Sign in button
               MyButton(
-                onTap: signUserIn,
+                onTap: () => toggleAuth(), // Call the toggleAuth function
               ),
               const SizedBox(height: 25),
 
