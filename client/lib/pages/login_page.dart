@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//import 'package:modernlogintute/components/my_button.dart';
-import '../components/my_textfield.dart';
+import '../components/my_button.dart';
+import '../components/my_textfield.dart'; // ../ going to previous directory
 import '../main.dart';
-//import 'package:modernlogintute/components/square_tile.dart';
+import '../components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -11,6 +11,9 @@ class LoginPage extends StatelessWidget {
   // Text editing controllers
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+
+  // sign user in method
+  void signUserIn() {}
 
   @override
   Widget build(BuildContext context) {
@@ -21,93 +24,157 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: const Color(0xFFF3E2CD),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 50.0),
-        child: Column(
-          children: [
-            // Logo
-            Padding(
-              padding: const EdgeInsets.all(64.0),
-              child: Image.asset(
-                'lib/images/timefly.png',
-                width: 300,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 100.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // align everything to the middle for any screen size
+            children: [
+              // Logo
+             /** Padding(
+                padding: const EdgeInsets.only(top:0.0),
+                child: Image.asset(
+                  'lib/images/timefly.png',
+                  height: 200,
+                  width: 200,
+                ),
+              ),**/
+
+              // Welcome back, you've been missed!
+              const Text(
+                'TIMEFLY',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 60,
+                  fontFamily: 'ArchivoBlack',
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
 
-            Padding(
-              padding: const EdgeInsets.all(48.0),
-              child: Image.asset(
-                'lib/images/login.png',
-                width: 200,
+              const Text(
+                'Moments in Time, Memories Forever...',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontFamily: 'ArchivoBlack',
+                ),
+                textAlign: TextAlign.center,
               ),
-            ),
 
-            // Welcome back, you've been missed!
-            const Text(
-              'Welcome back! Sign in to save your memories!',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontFamily: 'ArchivoBlack',
+              const SizedBox(height: 0),
+
+              Padding(
+                padding: const EdgeInsets.all(0.0),
+                child: Image.asset(
+                  'lib/images/login.png',
+                  height: 100,
+                  width: 100,
+                ),
               ),
-              textAlign: TextAlign.center,
-            ),
 
-            const SizedBox(height: 25),
+              // Username text field
+              MyTextField(
+                controller: usernameController,
+                hintText: 'Username',
+                obscureText: false,
+              ),
 
-            // Username text field
-            MyTextField(
-              controller: usernameController,
-              hintText: 'Username',
-              obscureText: false,
-            ),
+              const SizedBox(height: 10),
 
-            const SizedBox(height: 10),
+              // Password text field
+              MyTextField(
+                controller: passwordController,
+                hintText: 'Password',
+                obscureText: true, // Set to true if it's a password field since you don't want it seen
+              ),
 
-            // Password text field
-            MyTextField(
-              controller: passwordController,
-              hintText: 'Password',
-              obscureText: true, // Set to true if it's a password field
-            ),
+              const SizedBox(height: 10),
 
-            const SizedBox(height: 10),
+              // forgot password
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.grey[600]),
+                    ),
+                  ],
+                ),
+              ),
 
-            // forgot password
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              const SizedBox(height: 25),
+
+              // Sign in button
+              MyButton(
+                onTap: signUserIn,
+              ),
+              const SizedBox(height: 25),
+
+              // Continue with
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Text(
+                        'Or continue with',
+                        style: TextStyle(color: Colors.grey[700]),
+                      ),
+                    ),
+                    Expanded(
+                      child: Divider(
+                        thickness: 0.5,
+                        color: Colors.grey[400],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // google + apple sign in buttons
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                // side by side
+                children: const [
+                  // google button
+                  SquareTile(imagePath: 'lib/images/google.png'),
+
+                  SizedBox(width: 0),
+                ],
+              ),
+              const SizedBox(height: 10),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Colors.grey[600]),
+                    'Not a member?',
+                    style: TextStyle(color: Colors.grey[700]),
+                  ),
+                  const SizedBox(width: 4),
+                  const Text(
+                    'Sign Up Now',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ],
               ),
-            ),
-
-            const SizedBox(height: 25),
-
-            // Sign in button
-            // Add your sign-in button here
-            ElevatedButton(
-              onPressed: () {
-                // Add your sign-in button logic here
-                toggleAuth();
-              },
-              child: const Text('Sign In'),
-            ),
-
-            // Continue with
-            // Add your continue with widget here
-
-            // Google sign in button
-            // Add your Google sign-in button here
-
-            // Not a member? Sign in
-            // Add your "Not a member? Sign in" widget here
-          ],
+            ],
+          ),
         ),
       ),
     );
