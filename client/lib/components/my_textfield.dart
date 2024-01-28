@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyTextField extends StatelessWidget {
-  final controller;
+  final controller; //access what user typed in the box
   final String hintText;
   final bool obscureText;
 
