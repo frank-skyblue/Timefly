@@ -6,9 +6,9 @@ def get_mock_data():
     people.append({
         'name': 'John',
         'handle': 'john99',
-        'age': '24',
+        'age': 24,
         'places_visited': ['Canada', 'United States', 'Hungary'],
-        'in_contacts': 'true'
+        'in_contacts': True
     })
     ###########################
 
@@ -16,18 +16,18 @@ def get_mock_data():
     people.append({
         'name': 'Alice',
         'handle': 'theAlice',
-        'age': '21',
+        'age': 21,
         'places_visited': ['France', 'Hungary'],
-        'in_contacts': 'true'
+        'in_contacts': True
     })
 
     # Contact 2
     people.append({
         'name': 'Bob',
         'handle': 'bob123',
-        'age': '19',
+        'age': 19,
         'places_visited': ['Canada', 'Japan', 'Hungary'],
-        'in_contacts': 'true'
+        'in_contacts': True
     })
 
     # Contact 3
