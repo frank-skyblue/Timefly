@@ -67,7 +67,7 @@ class FriendsPage extends StatelessWidget {
                           fontSize: 24,
                           fontFamily: 'ArchivoBlack',
                         ),
-                        child: Text('My Friends'),
+                        child: Text('Contacts'),
                       ),
                     ],
                   ),
