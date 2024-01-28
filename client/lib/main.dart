@@ -39,8 +39,9 @@ class AuthWrapper extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: const Color.fromARGB(255, 218, 188, 18))),
       home: appState.isAuthenticated
           ? const HomePage()
           : LoginPage(), // Pass toggleAuth function to LoginPage
